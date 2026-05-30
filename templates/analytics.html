@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Analytics Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="analytics-container">
+
+<h1>
+Fitness Analytics Dashboard
+</h1>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h2>
+{{ stats.users }}
+</h2>
+
+<p>Total Users</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>
+{{ stats.avg_bmi }}
+</h2>
+
+<p>Average BMI</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>
+{{ stats.avg_calories }}
+</h2>
+
+<p>Average Calories</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>
+{{ stats.predictions }}
+</h2>
+
+<p>Total Predictions</p>
+
+</div>
+
+</div>
+
+<div class="charts-grid">
+
+<div class="chart-card">
+
+<h3>BMI Distribution</h3>
+
+<img src="/static/bmi_chart.png">
+
+</div>
+
+<div class="chart-card">
+
+<h3>Calories Distribution</h3>
+
+<img src="/static/calories_chart.png">
+
+</div>
+
+<div class="chart-card">
+
+<h3>Goal Distribution</h3>
+
+<img src="/static/goals_chart.png">
+
+</div>
+
+<div class="chart-card">
+
+<h3>Age vs Calories</h3>
+
+<img src="/static/scatter_chart.png">
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

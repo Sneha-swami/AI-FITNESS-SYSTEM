@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0">
+
+    <title>AI Fitness Chatbot</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <h1>AI Fitness Assistant</h1>
+
+        <div>
+
+            <a href="/">Home</a>
+
+            <a href="/analytics">
+                Analytics
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- CHAT CONTAINER -->
+
+    <div class="chat-container">
+
+        <div class="chat-box">
+
+            <div class="bot-message">
+
+                Hello 👋
+
+                I am your AI Fitness Assistant.
+
+                Ask me about:
+                workouts,
+                calories,
+                diet,
+                weight loss,
+                muscle gain,
+                BMI and fitness tips.
+
+            </div>
+
+            {% if user_message %}
+
+            <div class="user-message">
+
+                {{ user_message }}
+
+            </div>
+
+            {% endif %}
+
+            {% if bot_response %}
+
+            <div class="bot-message">
+
+                {{ bot_response }}
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <!-- FORM -->
+
+        <form action="/chatbot"
+              method="POST"
+              class="chat-form">
+
+            <input type="text"
+                   name="message"
+                   placeholder="Ask your fitness question..."
+                   required>
+
+            <button type="submit">
+
+                Send
+
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

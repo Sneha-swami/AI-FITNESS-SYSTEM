@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Fitness Recommendation System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <h1>AI Fitness System</h1>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/history">History</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/chatbot">AI Chatbot</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+</nav>
+
+<div class="hero">
+
+    <div class="overlay">
+
+        <h1>AI Powered Fitness Recommendation System</h1>
+
+        <p>
+            Smart calorie prediction, BMI analysis,
+            AI fitness score and personalized workout plans.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Enter Your Fitness Details</h2>
+
+        <form action="/predict" method="POST">
+
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <input type="number"
+                   name="age"
+                   placeholder="Age"
+                   required>
+
+            <input type="number"
+                   step="0.1"
+                   name="height"
+                   placeholder="Height (cm)"
+                   required>
+
+            <input type="number"
+                   step="0.1"
+                   name="weight"
+                   placeholder="Weight (kg)"
+                   required>
+
+            <input type="number"
+                   name="duration"
+                   placeholder="Workout Duration (minutes)"
+                   required>
+
+            <input type="number"
+                   name="heart_rate"
+                   placeholder="Heart Rate"
+                   required>
+
+            <input type="number"
+                   step="0.1"
+                   name="body_temp"
+                   placeholder="Body Temperature"
+                   required>
+
+            <select name="goal" required>
+                <option value="">Select Goal</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Muscle Gain">Muscle Gain</option>
+                <option value="Maintain Fitness">Maintain Fitness</option>
+            </select>
+
+            <button type="submit">
+                Generate AI Recommendation
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if result %}
+
+    <div class="result-card">
+
+        <h2>AI Fitness Report</h2>
+
+        <div class="health-score-card">
+
+            <div class="score-circle">
+                {{ result.fitness_score }}
+            </div>
+
+            <div>
+                <h3>AI Fitness Score</h3>
+                <p>{{ result.score_status }}</p>
+                <span>Score calculated using BMI, activity and calories.</span>
+            </div>
+
+        </div>
+
+        <div class="bmi-meter-card">
+
+            <h3>BMI Progress Meter</h3>
+
+            <div class="bmi-info-row">
+                <span>BMI: {{ result.bmi }}</span>
+                <span>{{ result.category }}</span>
+            </div>
+
+            <div class="bmi-progress">
+                <div class="bmi-progress-fill"
+                     data-width="{{ result.bmi_percentage }}">
+                </div>
+            </div>
+
+            <div class="bmi-labels">
+                <span>Underweight</span>
+                <span>Normal</span>
+                <span>Overweight</span>
+                <span>Obese</span>
+            </div>
+
+        </div>
+
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <h4>BMI Status</h4>
+                <p>{{ result.category }}</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h4>Calories Burned</h4>
+                <p>{{ result.calories }}</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h4>Fitness Goal</h4>
+                <p>{{ result.goal }}</p>
+            </div>
+
+            <div class="dashboard-card">
+                <h4>Workout Duration</h4>
+                <p>{{ result.duration }} min</p>
+            </div>
+
+        </div>
+
+        <div class="result-box">
+
+            <h3>AI Workout Plan</h3>
+
+            <pre>{{ result.workout }}</pre>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <div class="exercise-section">
+
+        <h2>Popular Workouts</h2>
+
+        <div class="exercise-cards">
+
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop">
+                <h3>Cardio Training</h3>
+            </div>
+
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop">
+                <h3>Strength Training</h3>
+            </div>
+
+            <div class="exercise-card">
+                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop">
+                <h3>Flexibility Training</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
