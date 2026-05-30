@@ -1,0 +1,7 @@
+Flask
+Flask-Bcrypt
+pandas
+numpy
+matplotlib
+scikit-learn
+gunicorn
